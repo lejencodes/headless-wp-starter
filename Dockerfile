@@ -21,10 +21,12 @@ RUN curl -sL https://raw.githubusercontent.com/composer/getcomposer.org/master/w
 	mkdir /var/www/.composer; \
 	chown www-data:www-data /var/www/.composer
 
+# add plugin?
+RUN sudo -u www-data composer global config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+
 # phpunit, phpcs, wpcs
 RUN sudo -u www-data composer global require \
 	phpunit/phpunit \
-	dealerdirect/phpcodesniffer-composer-installer \
 	phpcompatibility/phpcompatibility-wp \
 	automattic/vipwpcs
 
